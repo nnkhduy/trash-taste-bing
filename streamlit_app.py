@@ -16,7 +16,7 @@ db = init_connection()
 @st.cache_data(ttl=600)
 def get_episodes():
     episode_collection = db["trash_taste"]
-    episodes = list(episode_collection.find())
+    episodes = list(episode_collection.find({}, sort={"date": 1}))
 
     return episodes
 
